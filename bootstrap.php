@@ -35,3 +35,8 @@
 
 namespace PurpleProdigy\CollapsibleContent;
 
+if ( !defined( 'ABSPATH' )) {
+	die( "Nothing to see here." );
+}
+
+include( __DIR__ . '/src/shortcode/shortcodes.php');
