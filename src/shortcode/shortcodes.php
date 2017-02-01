@@ -10,10 +10,6 @@
  */
 namespace PurpleProdigy\CollapsibleContent\Shortcode;
 
-// [qa question="What question would you like to ask?" show-icon="" hide-icon=""]this is the answer[/qa]
-
-//[teaser visible_message="What question would you like to ask?" show-icon="" hide-icon=""]this is the answer[/teaser]
-
 add_shortcode( 'qa', __NAMESPACE__ . '\process_the_shortcode' );
 add_shortcode( 'teaser', __NAMESPACE__ . '\process_the_shortcode' );
 /**
