@@ -49,3 +49,4 @@ define( 'COLLAPSIBLE_CONTENT_URL', $plugin_url );
 define( 'COLLAPSIBLE_CONTENT_TEXT_DOMAIN', 'collapsible_content' );
 
 include( __DIR__ . '/src/plugin.php');
+
