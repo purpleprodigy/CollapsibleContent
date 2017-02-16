@@ -24,6 +24,8 @@ function register_custom_taxonomy() {
 		'labels'            => get_taxonomy_labels_config( 'Topic', 'Topics', 'topics' ),
 		'hierarchical'      => true,
 		'show_admin_column' => true,
+		'public' => false,
+		'show_ui' => true,
 	);
 
 	register_taxonomy( 'topic', array( 'faq'), $args );
@@ -65,25 +67,4 @@ function get_taxonomy_labels_config( $singular_label, $plural_label, $plural_lab
 		'not_found'                  => __( "No {$plural_label_lower_case} found.", FAQ_MODULE_TEXT_DOMAIN ),
 		'menu_name'                  => $menu_label,
 	);
-}
-
-add_filter( 'genesis_post_meta', __NAMESPACE__ . '\filter_genesis_footer_post_meta' );
-/**
- * Filter the Genesis Footer Entry Post Meta
- * to add the post terms for our custom taxonomy to it.
- *
- * @since 1.0.0
- *
- * @param string $post_meta
- *
- * @return string
- */
-function filter_genesis_footer_post_meta( $post_meta ) {
-
-	$post_meta .= sprintf(
-		' [post_terms taxonomy="topic" before="%s"]',
-		__( '$singular_label: ', FAQ_MODULE_TEXT_DOMAIN )
-	);
-
-	return $post_meta;
 }
