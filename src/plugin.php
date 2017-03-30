@@ -3,7 +3,7 @@
  * Plugin Handler
  *
  * @package     PurpleProdigy\CollapsibleContent;
- * @since       1.0.0
+ * @since       1.2.0
  * @author      Purple Prodigy
  * @link        http://www.purpleprodigy.com
  * @licence     GNU General Public License 2.0+
@@ -32,7 +32,7 @@ function enqueue_assets() {
 /**
  * Autoload plugin files.
  *
- * @since 1.0.0
+ * @since 1.2.0
  *
  * @return void
  */
