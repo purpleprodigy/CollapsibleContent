@@ -5,7 +5,7 @@
  * @package     PurpleProdigy\CollapsibleContent;
  * @since       1.2.0
  * @author      Purple Prodigy
- * @link        http://www.purpleprodigy.com
+ * @link        https://www.purpleprodigy.com
  * @licence     GNU General Public License 2.0+
  */
 namespace PurpleProdigy\CollapsibleContent;
