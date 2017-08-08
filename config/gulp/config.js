@@ -24,7 +24,7 @@ module.exports = function ( moduleRoot ) {
 		i18n: {
 			textdomain: 'collapsible_content',
 			languageFilename: 'collapsible-content.pot',
-			bugReport: 'http://purpleprodigy.com',
+			bugReport: 'https://purpleprodigy.com',
 			lastTranslator: 'Purple Prodigy <info@purpleprodigy.com>',
 			team: 'Team <info@purpleprodigy.com>'
 		}

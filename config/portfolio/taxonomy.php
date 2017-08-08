@@ -1,6 +1,6 @@
 <?php
 /**
- * Runtime configuration for the Topic taxonomy.
+ * Runtime configuration for the portfolio taxonomy.
  *
  * @package     NAMESPACE
  * @since       1.0.0
@@ -8,4 +8,4 @@
  * @link        https://www.purpleprodigy.com
  * @licence     GNU General Public License 2.0+
  */
-namespace NAMESPACE
+

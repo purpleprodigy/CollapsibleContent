@@ -5,7 +5,7 @@
  * @package     PurpleProdigy\CollapsibleContent;
  * @author      Purple Prodigy
  * @licence     GPL-2.0+
- * @link        https://www.purpleprodigy.com
+ * @link        https://purpleprodigy.com
  */
 /*
  * @wordpress-plugin
@@ -14,7 +14,7 @@
  * Description:     Collapsible Content is a WordPress Plugin that shows and hides hidden content.  Practical examples include Q&As, FAQs, hints, marketing teasers, and more.  Click the icon to open and reveal the content. Click again to close and hide it.
  * Version:         1.2.0
  * Author:          Purple Prodigy
- * Author URI:      https://www.purpleprodigy.com
+ * Author URI:      https://purpleprodigy.com
  * Text Domain:     collapsible_content
  * Requires WP:     4.7
  * Requires PHP:    5.5
@@ -35,12 +35,14 @@
 
 namespace PurpleProdigy\CollapsibleContent;
 
+use PurpleProdigy\Module\Custom as CustomModule;
+
 if ( !defined( 'ABSPATH' ) ) {
 	die( "Nothing to see here." );
 }
 
 define( 'COLLAPSIBLE_CONTENT_PLUGIN', __FILE__ );
-define( 'COLLAPSIBLE_CONTENT_DIR', plugin_dir_path( __FILE__ ) );
+define( 'COLLAPSIBLE_CONTENT_DIR', trailingslashit( __DIR__ ) );
 $plugin_url = plugin_dir_url( __FILE__ );
 if ( is_ssl() ) {
 	$plugin_url = str_replace( 'http://', 'https://', $plugin_url );
@@ -50,3 +52,4 @@ define( 'COLLAPSIBLE_CONTENT_TEXT_DOMAIN', 'collapsible_content' );
 
 include( __DIR__ . '/src/plugin.php');
 
+CustomModule\register_plugin( __FILE__ );

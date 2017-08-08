@@ -11,6 +11,7 @@
 			$visibleContents.on( 'click', clickHandler );
 		}
 
+
 		/**
 		 *  Click event handler
 		 * @param event
@@ -38,7 +39,7 @@
 		 *  Change the icon handler
 		 */
 		function changeIcon( index, isHiddenContentShowing ) {
-			var $iconElement = $( $icons[ index ] ),
+			var $iconElement = $( $icons[index] ),
 				showIcon = $iconElement.data( 'showIcon' ),
 				hideIcon = $iconElement.data( 'hideIcon' ),
 				removeClass, addClass;

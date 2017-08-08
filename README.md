@@ -16,7 +16,7 @@ This plugin includes the following features:
 To install this plugin, you can download it by clicking on the GitHub download button or clone the repository.
 
 1. Navigate to the 'wp-content/plugins' folder of your project.
-2. Then type in terminal: 'git clone https://github.com/purpleprodigy/CollapsibleContent'.
+2. Then type in terminal: 'git clone https://github.com/purpleprodigy/CollapsibleContent.git'.
 3. Log in to your WordPress website.
 4. Go to Plugins and activate the Collapsible Content plugin.
 

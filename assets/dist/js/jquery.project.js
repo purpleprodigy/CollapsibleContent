@@ -11,6 +11,7 @@
 			$visibleContents.on( 'click', clickHandler );
 		}
 
+
 		/**
 		 *  Click event handler
 		 * @param event
