@@ -2,12 +2,14 @@
 
 Collapsible Content is a WordPress Plugin that shows and hides hidden content.  Practical examples include Q&As, FAQs, hints, marketing teasers, and more.  Click the icon to open and reveal the content. Click again to close and hide it.
 
+
 ## Features
 
 This plugin includes the following features:
 
 - QA Shortcode, '[qa]'
 - Teaser Shortcode, '[teaser]'
+- Frequently Asked Questions '[faq]'
 - Font icon visual indicator
 - jQuery sliding animation
 
