@@ -3,12 +3,14 @@
  * FAQ Module Handler
  *
  * @package     PurpleProdigy\Module\FAQ
- * @since       1.0.0
+ * @since       1.3.0
  * @author      Purple Prodigy
  * @link        https://www.purpleprodigy.com
  * @licence     GNU General Public License 2.0+
  */
 namespace PurpleProdigy\Module\FAQ;
+
+use PurpleProdigy\Module\Custom as CustomModule;
 
 define( 'FAQ_MODULE_TEXT_DOMAIN', COLLAPSIBLE_CONTENT_TEXT_DOMAIN );
 define( 'FAQ_MODULE_DIR', trailingslashit( __DIR__ ) );
@@ -19,7 +21,7 @@ add_filter( 'add_custom_taxonomy_runtime_config', __NAMESPACE__ . '\register_faq
  * Loading in the post type and taxonomy runtime configurations with
  * the Custom Module.
  *
- * @since 1.0.0
+ * @since 1.3.0
  *
  * @param array $configurations Array of all the configurations.
  *
@@ -48,7 +50,7 @@ function register_faq_custom_configs( array $configurations ) {
 /**
  * Autoload plugin files.
  *
- * @since 1.0.0
+ * @since 1.3.0
  *
  * @return void
  */
@@ -61,6 +63,18 @@ function autoload() {
 	foreach( $files as $file ) {
 		include( __DIR__ . '/' . $file );
 	}
+}
+
+add_action( 'plugins_loaded', __NAMESPACE__ . '\setup_module' );
+/**
+ * Setup the module.
+ *
+ * @since 1.3.0
+ *
+ * @return void
+ */
+function setup_module() {
+	CustomModule\register_shortcode( FAQ_MODULE_DIR . 'config/shortcode.php' );
 }
 
 autoload();

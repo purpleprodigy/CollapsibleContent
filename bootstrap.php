@@ -12,7 +12,7 @@
  * Plugin Name:     Collapsible Content
  * Plugin URI:      https://github.com/purpleprodigy/CollapsibleContent
  * Description:     Collapsible Content is a WordPress Plugin that shows and hides hidden content.  Practical examples include Q&As, FAQs, hints, marketing teasers, and more.  Click the icon to open and reveal the content. Click again to close and hide it.
- * Version:         1.2.0
+ * Version:         1.3.0
  * Author:          Purple Prodigy
  * Author URI:      https://purpleprodigy.com
  * Text Domain:     collapsible_content

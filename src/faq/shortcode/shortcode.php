@@ -10,26 +10,19 @@
  */
 namespace PurpleProdigy\Module\FAQ\Shortcode;
 
-add_shortcode( 'faq', __NAMESPACE__ . '\process_the_shortcode' );
 /**
  * Process the FAQ Shortcode to build a list of FAQs.
  *
- * @since 1.0.0
+ * @since 1.3.0
  *
- * @param array|string $user_defined_attributes User defined attributes for this shortcode instance
+ * @param array $config Array of runtime configuration parameters.
+ * @param array $attributes Attributes for this shortcode instance
  * @param string|null $content Content between the opening and closing shortcode elements
  * @param string $shortcode_name Name of the shortcode
  *
  * @return string
  */
-function process_the_shortcode( $user_defined_attributes, $content, $shortcode_name ) {
-	$config = get_shortcode_configuration();
-
-	$attributes = shortcode_atts(
-		$config['defaults'],
-		$user_defined_attributes,
-		$shortcode_name
-	);
+function process_the_faq_shortcode( array $config, array $attributes, $content, $shortcode_name ) {
 
 	$attributes['post_id'] = (int) $attributes['post_id'];
 
@@ -41,9 +34,9 @@ function process_the_shortcode( $user_defined_attributes, $content, $shortcode_n
 
 	// Call the view file, capture it into the output buffer, and then return it.
 	ob_start();
+
 	if ( $attributes['post_id'] > 0 ) {
 		render_single_faq( $attributes, $config );
-
 	} else {
 		render_topic_faqs( $attributes, $config );
 	}
@@ -54,7 +47,7 @@ function process_the_shortcode( $user_defined_attributes, $content, $shortcode_n
 /**
  * Render the single FAQ.
  *
- * @since 1.0.0
+ * @since 1.3.0
  *
  * @param array $attributes
  * @param array $config
@@ -64,9 +57,7 @@ function process_the_shortcode( $user_defined_attributes, $content, $shortcode_n
 function render_single_faq( array $attributes, array $config ) {
 	$faq = get_post( $attributes['post_id'] );
 	if ( ! $faq ) {
-		render_none_found_message( $attributes );
-
-		return;
+		return render_none_found_message( $attributes );
 	}
 
 	$use_term_container = false;
@@ -74,14 +65,13 @@ function render_single_faq( array $attributes, array $config ) {
 	$post_title         = $faq->post_title;
 	$hidden_content     = do_shortcode( $faq->post_content );
 
-	include( $config['views']['container_single'] );
-
+	include( $config['view']['container_single'] );
 }
 
 /**
- * Render the topic FAQs.
+ * Render the Topic FAQs.
  *
- * @since 1.0.0
+ * @since 1.3.0
  *
  * @param array $attributes
  * @param array $config
@@ -113,7 +103,7 @@ function render_topic_faqs( array $attributes, array $config ) {
 	$is_calling_source  = 'shortcode-by-topic';
 	$term_slug          = $attributes['topic'];
 
-	include( $config['views']['container_topic'] );
+	include( $config['view']['container_topic'] );
 
 	wp_reset_postdata();
 }
@@ -121,7 +111,7 @@ function render_topic_faqs( array $attributes, array $config ) {
 /**
  * Loop through the query and render out the FAQs by topic.
  *
- * @since 1.0.0
+ * @since 1.3.0
  *
  * @param \WP_Query $query
  * @param array $attributes
@@ -136,13 +126,12 @@ function loop_and_render_faqs_by_topic( \WP_Query $query, array $attributes, arr
 		$post_title     = get_the_title();
 		$hidden_content = do_shortcode( get_the_content() );
 
-		include( $config['views']['faq'] );
-
+		include( $config['view']['faq'] );
 	}
 }
 
 /**
- * Render the "none found" message handler.
+ * Render "none found" message handler.
  *
  * @since 1.0.0
  *
@@ -155,39 +144,10 @@ function render_none_found_message( array $attributes, $is_single_faq = true ) {
 	if ( ! $attributes['show_none_found_message'] ) {
 		return;
 	}
+
 	$message = $is_single_faq
-		? $attributes['show_none_found_single']
-		: $attributes['show_none_found_topic'];
+		? $attributes['none_found_single']
+		: $attributes['none_found_by_topic'];
 
 	echo "<p>{$message}</p>";
-}
-
-/**
- * Get the runtime configuration parameters for the specified shortcode.
- *
- * @since 1.0.0
- *
- * @param string $shortcode_name Name of the shortcode
- *
- * @return array
- */
-function get_shortcode_configuration() {
-	return array(
-		'views'    => array(
-			'container_single' => FAQ_MODULE_DIR . '/views/container.php',
-			'container_topic'  => FAQ_MODULE_DIR . '/views/container.php',
-			'faq'              => FAQ_MODULE_DIR . '/views/faq.php',
-		),
-		'defaults' => array(
-			'show_icon'               => 'dashicons dashicons-arrow-down-alt2',
-			'hide_icon'               => 'dashicons dashicons-arrow-up-alt2',
-			'post_id'                 => 0,
-			'topic'                   => '',
-			'number_of_faqs'          => - 1,
-			'show_none_found_message' => 1,
-			'none_found_by_topic'     => __( 'Sorry, no FAQs found for that topic.', FAQ_MODULE_TEXT_DOMAIN ),
-			'none_found_by_single'    => __( 'Sorry, no FAQ found.', FAQ_MODULE_TEXT_DOMAIN ),
-			""
-		),
-	);
 }
