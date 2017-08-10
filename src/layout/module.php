@@ -1,22 +1,22 @@
 <?php
 /**
- * FAQ Module Handler
+ * Accommodation Module Handler
  *
- * @package     PurpleProdigy\Module\FAQ
+ * @package     PurpleProdigy\Module\Accommodation
  * @since       1.3.0
  * @author      Purple Prodigy
  * @link        https://www.purpleprodigy.com
  * @licence     GNU General Public License 2.0+
  */
-namespace PurpleProdigy\Module\FAQ;
+namespace PurpleProdigy\Module\Accommodation;
 
 use PurpleProdigy\Module\Custom as CustomModule;
 
-define( 'FAQ_MODULE_TEXT_DOMAIN', COLLAPSIBLE_CONTENT_TEXT_DOMAIN );
-define( 'FAQ_MODULE_DIR', trailingslashit( __DIR__ ) );
+define( 'ACCOMMODATION_MODULE_TEXT_DOMAIN', COLLAPSIBLE_CONTENT_TEXT_DOMAIN );
+define( 'ACCOMMODATION_MODULE_DIR', trailingslashit( __DIR__ ) );
 
-add_filter( 'add_custom_post_type_runtime_config', __NAMESPACE__ . '\register_faq_custom_configs' );
-add_filter( 'add_custom_taxonomy_runtime_config', __NAMESPACE__ . '\register_faq_custom_configs' );
+add_filter( 'add_custom_post_type_runtime_config', __NAMESPACE__ . '\register_accommodation_custom_configs' );
+add_filter( 'add_custom_taxonomy_runtime_config', __NAMESPACE__ . '\register_accommodation_custom_configs' );
 /**
  * Loading in the post type and taxonomy runtime configurations with
  * the Custom Module.
@@ -27,13 +27,13 @@ add_filter( 'add_custom_taxonomy_runtime_config', __NAMESPACE__ . '\register_faq
  *
  * @return void
  */
-function register_faq_custom_configs( array $configurations ) {
+function register_accommodation_custom_configs( array $configurations ) {
 	$doing_post_type = current_filter() == 'add_custom_post_type_runtime_config';
 
 	$filename = $doing_post_type
 		? 'post-type'
 		: 'taxonomy';
-	$runtime_config = (array) require( FAQ_MODULE_DIR . 'config/' . $filename . '.php' );
+	$runtime_config = (array) require( ACCOMMODATION_MODULE_DIR . 'config/' . $filename . '.php' );
 	if ( ! $runtime_config ) {
 		return $configurations;
 	}
@@ -73,7 +73,7 @@ add_action( 'plugins_loaded', __NAMESPACE__ . '\setup_module' );
  * @return void
  */
 function setup_module() {
-	CustomModule\register_shortcode( FAQ_MODULE_DIR . 'config/shortcode.php' );
+	CustomModule\register_shortcode( ACCOMMODATION_MODULE_DIR . 'config/shortcode.php' );
 }
 
 autoload();

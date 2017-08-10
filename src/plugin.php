@@ -41,7 +41,7 @@ function enqueue_assets() {
 function autoload() {
 	$files = array(
 		'custom/module.php',
-		'faq/module.php',
+		'layout/module.php',
 	);
 
 	foreach( $files as $file ) {
