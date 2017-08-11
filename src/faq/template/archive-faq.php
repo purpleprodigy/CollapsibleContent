@@ -36,7 +36,7 @@ function do_faq_archive_loop() {
 	foreach ( $records as $record ) {
 		$term_slug = $record['term_slug'];
 
-		include( FAQ_MODULE_DIR . '/views/container.php' );
+		include( FAQ_MODULE_DIR . 'views/container.php' );
 	}
 }
 
@@ -59,7 +59,7 @@ function loop_and_render_faqs( array $faqs ) {
 		$hidden_content = do_shortcode( $faq['post_content'] );
 		$post_title     = $faq['post_title'];
 
-		include( FAQ_MODULE_DIR . '/views/faq.php' );
+		include( FAQ_MODULE_DIR . 'views/faq.php' );
 	}
 }
 

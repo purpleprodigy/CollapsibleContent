@@ -108,7 +108,7 @@ ORDER BY t.term_id, p.menu_order ASC;";
 
 	$results = $wpdb->get_results( $sql_query );
 	if ( ! $results || ! is_array( $results ) ) {
-		return false;
+		return array();
 	}
 
 	return $results;
